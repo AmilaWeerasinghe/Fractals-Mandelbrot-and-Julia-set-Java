@@ -1,0 +1,79 @@
+package Fractals;
+//this class is used to run thread mplementing runnable is chosen
+public class MandelbrotThread implements Runnable{
+  public static int maxiterations;//to store max iterations
+
+	//different threads may supply different regions
+  //therefore variables are need to store the boundary values
+  
+  private float xnegative;
+  private float ynegative;
+  private float xpositive;
+  private float ypositive;
+  
+  //the pixel plane can be considered as a 2d ARRAY
+  public static int [][] array=new int [800][800];
+  
+  //VARIABLES TO store the boundries of the regions 
+  private int rowend;
+  private int rowstart;
+  private int colend;
+  private int colstart;
+  
+  
+  //canavs size is fixed to 800*800
+  private int height=800;
+  private int width=800;
+  
+  //now create constructor overloadings
+  //constructor for Default mandelbrot
+  public MandelbrotThread(int rowstart,int rowend,int colstart,int colend){
+	  this.maxiterations=1000;
+	  this.xpositive=(float)1;
+	  this.xnegative=(float)-1;
+	  this.ypositive=(float)1;
+	  this.ynegative=(float)-1;//casting need because variables are intialized as floats
+	  
+	  this.rowend=rowend;
+	  this.colend=colend;
+	  this.rowstart=rowstart;
+	  this.colstart=colstart;
+	  
+  }
+  //constructor when boundries for complex plane is given by the user without iterations
+  public MandelbrotThread(float xpositive,float xnegative,float ypositive,float ynegative,int rowstart,int rowend,int colstart,int colend){
+	  this.xpositive=xpositive;
+	  this.ypositive=ypositive;
+	  this.ynegative=ynegative;
+	  this.xnegative=xnegative;
+	  
+	  this.rowend=rowend;
+	  this.colend=colend;
+	  this.rowstart=rowstart;
+	  this.colstart=colstart;
+	  this.maxiterations=1000;//default value
+  } 
+  
+//constructor when boundries for complex plane is given by the user with iterations
+  public MandelbrotThread(float xpositive,float xnegative,float ypositive,float ynegative,int rowstart,int rowend,int colstart,int colend,int maxiterations){
+	  this.xpositive=xpositive;
+	  this.ypositive=ypositive;
+	  this.ynegative=ynegative;
+	  this.xnegative=xnegative;
+	  
+	  this.rowend=rowend;
+	  this.colend=colend;
+	  this.rowstart=rowstart;
+	  this.colstart=colstart;
+	  this.maxiterations=maxiterations;
+	  
+  }
+  
+  //variables are fixed for all possible constructors
+	//implement the run for thread
+	public void run(){
+		
+		//Here we have to take each pixel and check weather it is in mandelbrotset or not
+		
+	}
+}
